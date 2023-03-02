@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class MapToCollectionMain {
     public static void main(String[] args) {
@@ -34,5 +35,19 @@ public class MapToCollectionMain {
             });
         });
 
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+        // print the keyset
+        System.out.println("Keyset: " + map.keySet());
+
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+        // Stream cameraAccess objects into a collection
+Collection<String> cameraAccessCollection = map.values().stream()
+                .flatMap(Collection::stream)
+                .map(CameraAccess::getRule)
+                .collect(Collectors.toList());
+
+        System.out.println("CameraAccessCollection: " + cameraAccessCollection);
     }
 }
