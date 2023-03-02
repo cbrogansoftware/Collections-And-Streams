@@ -1,5 +1,3 @@
-package enums;
-
 import pojos.CameraAccess;
 
 import java.util.HashMap;
